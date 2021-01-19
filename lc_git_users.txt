@@ -3,3 +3,4 @@ Gustavo,Da_Costa,gustavo.dacostagomez@ucalgary.ca,gustavodacosta,2021_ENCM369
 Steven,Poon,steven.poon@ucalgary.ca,s-poon,2021_ENCM369
 Miki,Rowbottom,miki.rowbottom@ucalgary.ca,mikirowbottom,2021_ENCM369
 Vyshnavi,Devarakonda,venkatasrivyshnavi.d@ucalgary.ca,vysh-devar,2021_ENCM369
+Srishti,Mathur,srishti.mathur@ucalgary.ca,Srishti-Mathur,2021_ENCM369
