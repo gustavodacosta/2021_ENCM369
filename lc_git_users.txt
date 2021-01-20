@@ -4,3 +4,4 @@ Steven,Poon,steven.poon@ucalgary.ca,s-poon,2021_ENCM369
 Miki,Rowbottom,miki.rowbottom@ucalgary.ca,mikirowbottom,2021_ENCM369
 Vyshnavi,Devarakonda,venkatasrivyshnavi.d@ucalgary.ca,vysh-devar,2021_ENCM369
 Srishti,Mathur,srishti.mathur@ucalgary.ca,Srishti-Mathur,2021_ENCM369
+Eunbi,Park,eunbi.park@ucalgary.ca,eunbiyah,2021_ENCM369
