@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Mon Feb 01 21:04:28 2021
+                                                                                               Tue Feb 02 11:16:59 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	18F27Q43
@@ -76,8 +76,8 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
     62                           ;initializer for UserAppRun@u8counter
     63  01FF41  80                 	db	128
     64  0000                     _ANSELA	set	1024
-    65  0000                     _LATA	set	1214
-    66  0000                     _TRISA	set	1222
+    65  0000                     _TRISA	set	1222
+    66  0000                     _LATA	set	1214
     67                           
     68                           ; #config settings
     69                           
@@ -203,13 +203,13 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    179  01FF7A  8E04               	bsf	(_G_u32SystemFlags+3)^(0+1280),7,c	;volatile
    180  01FF7C                     
    181                           ;main.c: 40:   ClockSetup();
-   182  01FF7C  ECA4  F0FF         	call	_ClockSetup	;wreg free
+   182  01FF7C  ECA1  F0FF         	call	_ClockSetup	;wreg free
    183  01FF80                     
    184                           ;main.c: 41:   SysTickSetup();
    185  01FF80  ECAC  F0FF         	call	_SysTickSetup	;wreg free
    186  01FF84                     
    187                           ;main.c: 42:   GpioSetup();
-   188  01FF84  ECA1  F0FF         	call	_GpioSetup	;wreg free
+   188  01FF84  ECA4  F0FF         	call	_GpioSetup	;wreg free
    189  01FF88                     
    190                           ;main.c: 47:   UserAppInitialize();
    191  01FF88  ECA3  F0FF         	call	_UserAppInitialize	;wreg free
@@ -270,10 +270,10 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    236  01FFC2                     _UserAppRun:
    237                           	callstack 127
    238  01FFC2                     
-   239                           ;user_app.c: 97:     static u8 u8counter = 0x80;;user_app.c: 98:     if(u8counter < 0xFF
-      +                          ){
-   240  01FFC2  2810               	incf	UserAppRun@u8counter^(0+1280),w,c
-   241  01FFC4  B4D8               	btfsc	status,2,c
+   239                           ;user_app.c: 97:     static u8 u8counter = 0x80;;user_app.c: 98:     if(u8counter <= 0xB
+      +                          F){
+   240  01FFC2  0EC0               	movlw	192
+   241  01FFC4  6010               	cpfslt	UserAppRun@u8counter^(0+1280),c
    242  01FFC6  EFE7  F0FF         	goto	u11
    243  01FFCA  EFE9  F0FF         	goto	u10
    244  01FFCE                     u11:
@@ -298,14 +298,14 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    263  01FFEC  D7FA               	bra	u27
    264  01FFEE  D000               	nop2	
    265  01FFF0                     
-   266                           ;user_app.c: 101:         u8counter++;
+   266                           ;user_app.c: 101:         u8counter += 0x01;
    267  01FFF0  2A10               	incf	UserAppRun@u8counter^(0+1280),f,c
    268                           
    269                           ;user_app.c: 102:     }
    270  01FFF2  EFFD  F0FF         	goto	l64
    271  01FFF6                     l752:
    272                           
-   273                           ;user_app.c: 104:         u8counter = 0x80;
+   273                           ;user_app.c: 104:        u8counter = 0x80;
    274  01FFF6  0E80               	movlw	128
    275  01FFF8  6E10               	movwf	UserAppRun@u8counter^(0+1280),c
    276  01FFFA                     l64:
@@ -363,7 +363,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    318                           
    319 ;; *************** function _SystemSleep *****************
    320 ;; Defined at:
-   321 ;;		line 131 in file "encm369_pic18.c"
+   321 ;;		line 132 in file "encm369_pic18.c"
    322 ;; Parameters:    Size  Location     Type
    323 ;;		None
    324 ;; Auto vars:     Size  Location     Type
@@ -411,7 +411,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    356                           
    357 ;; *************** function _SysTickSetup *****************
    358 ;; Defined at:
-   359 ;;		line 109 in file "encm369_pic18.c"
+   359 ;;		line 110 in file "encm369_pic18.c"
    360 ;; Parameters:    Size  Location     Type
    361 ;;		None
    362 ;; Auto vars:     Size  Location     Type
@@ -454,7 +454,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    389  01FF58                     _SysTickSetup:
    390                           	callstack 127
    391  01FF58                     
-   392                           ;encm369_pic18.c: 111:   G_u32SystemTime1ms = 0;
+   392                           ;encm369_pic18.c: 112:   G_u32SystemTime1ms = 0;
    393  01FF58  0E00               	movlw	0
    394  01FF5A  6E09               	movwf	_G_u32SystemTime1ms^(0+1280),c	;volatile
    395  01FF5C  0E00               	movlw	0
@@ -464,7 +464,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    399  01FF64  0E00               	movlw	0
    400  01FF66  6E0C               	movwf	(_G_u32SystemTime1ms+3)^(0+1280),c	;volatile
    401                           
-   402                           ;encm369_pic18.c: 112:   G_u32SystemTime1s = 0;
+   402                           ;encm369_pic18.c: 113:   G_u32SystemTime1s = 0;
    403  01FF68  0E00               	movlw	0
    404  01FF6A  6E05               	movwf	_G_u32SystemTime1s^(0+1280),c	;volatile
    405  01FF6C  0E00               	movlw	0
@@ -479,7 +479,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    414                           
    415 ;; *************** function _GpioSetup *****************
    416 ;; Defined at:
-   417 ;;		line 90 in file "encm369_pic18.c"
+   417 ;;		line 89 in file "encm369_pic18.c"
    418 ;; Parameters:    Size  Location     Type
    419 ;;		None
    420 ;; Auto vars:     Size  Location     Type
@@ -487,7 +487,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    422 ;; Return value:  Size  Location     Type
    423 ;;                  1    wreg      void 
    424 ;; Registers used:
-   425 ;;		None
+   425 ;;		wreg, status,2
    426 ;; Tracked objects:
    427 ;;		On entry : 0/0
    428 ;;		On exit  : 0/0
@@ -517,75 +517,75 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    442 ;;
    443                           
    444                           	psect	text5
-   445  01FF42                     __ptext5:
+   445  01FF48                     __ptext5:
    446                           	callstack 0
-   447  01FF42                     _GpioSetup:
+   447  01FF48                     _GpioSetup:
    448                           	callstack 127
-   449  01FF42  0012               	return		;funcret
-   450  01FF44                     __end_of_GpioSetup:
-   451                           	callstack 0
-   452                           
-   453 ;; *************** function _ClockSetup *****************
-   454 ;; Defined at:
-   455 ;;		line 70 in file "encm369_pic18.c"
-   456 ;; Parameters:    Size  Location     Type
-   457 ;;		None
-   458 ;; Auto vars:     Size  Location     Type
-   459 ;;		None
-   460 ;; Return value:  Size  Location     Type
-   461 ;;                  1    wreg      void 
-   462 ;; Registers used:
-   463 ;;		wreg, status,2
-   464 ;; Tracked objects:
-   465 ;;		On entry : 0/0
-   466 ;;		On exit  : 0/0
-   467 ;;		Unchanged: 0/0
-   468 ;; Data sizes:     COMRAM   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15  BANK1
+   449  01FF48                     
+   450                           ;encm369_pic18.c: 91:     LATA = 0x00;
+   451  01FF48  0E00               	movlw	0
+   452  01FF4A  6EBE               	movwf	190,c	;volatile
+   453                           
+   454                           ;encm369_pic18.c: 92:     TRISA = 0x00;
+   455  01FF4C  0E00               	movlw	0
+   456  01FF4E  6EC6               	movwf	198,c	;volatile
+   457                           
+   458                           ;encm369_pic18.c: 93:     ANSELA = 0x00;
+   459  01FF50  0E00               	movlw	0
+   460  01FF52  0104               	movlb	4	; () banked
+   461  01FF54  6F00               	movwf	0,b	;volatile
+   462  01FF56                     
+   463                           ; BSR set to: 4
+   464  01FF56  0012               	return		;funcret
+   465  01FF58                     __end_of_GpioSetup:
+   466                           	callstack 0
+   467                           
+   468 ;; *************** function _ClockSetup *****************
+   469 ;; Defined at:
+   470 ;;		line 70 in file "encm369_pic18.c"
+   471 ;; Parameters:    Size  Location     Type
+   472 ;;		None
+   473 ;; Auto vars:     Size  Location     Type
+   474 ;;		None
+   475 ;; Return value:  Size  Location     Type
+   476 ;;                  1    wreg      void 
+   477 ;; Registers used:
+   478 ;;		None
+   479 ;; Tracked objects:
+   480 ;;		On entry : 0/0
+   481 ;;		On exit  : 0/0
+   482 ;;		Unchanged: 0/0
+   483 ;; Data sizes:     COMRAM   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15  BANK1
       +6  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25  BANK26  BANK27  BANK28  BANK29  BANK30  BANK3
       +1  BANK32  BANK33  BANK34  BANK35  BANK36  BANK37
-   469 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   484 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0
-   470 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   485 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0
-   471 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   486 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0
-   472 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   487 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0
-   473 ;;Total ram usage:        0 bytes
-   474 ;; Hardware stack levels used:    1
-   475 ;; This function calls:
-   476 ;;		Nothing
-   477 ;; This function is called by:
-   478 ;;		_main
-   479 ;; This function uses a non-reentrant model
-   480 ;;
-   481                           
-   482                           	psect	text6
-   483  01FF48                     __ptext6:
-   484                           	callstack 0
-   485  01FF48                     _ClockSetup:
-   486                           	callstack 127
-   487  01FF48                     
-   488                           ;encm369_pic18.c: 72:     TRISA = 0x00;
-   489  01FF48  0E00               	movlw	0
-   490  01FF4A  6EC6               	movwf	198,c	;volatile
-   491                           
-   492                           ;encm369_pic18.c: 73:     ANSELA = 0x00;
-   493  01FF4C  0E00               	movlw	0
-   494  01FF4E  0104               	movlb	4	; () banked
-   495  01FF50  6F00               	movwf	0,b	;volatile
+   488 ;;Total ram usage:        0 bytes
+   489 ;; Hardware stack levels used:    1
+   490 ;; This function calls:
+   491 ;;		Nothing
+   492 ;; This function is called by:
+   493 ;;		_main
+   494 ;; This function uses a non-reentrant model
+   495 ;;
    496                           
-   497                           ;encm369_pic18.c: 74:     LATA = 0x00;
-   498  01FF52  0E00               	movlw	0
-   499  01FF54  6EBE               	movwf	190,c	;volatile
-   500  01FF56                     
-   501                           ; BSR set to: 4
-   502  01FF56  0012               	return		;funcret
-   503  01FF58                     __end_of_ClockSetup:
+   497                           	psect	text6
+   498  01FF42                     __ptext6:
+   499                           	callstack 0
+   500  01FF42                     _ClockSetup:
+   501                           	callstack 127
+   502  01FF42  0012               	return		;funcret
+   503  01FF44                     __end_of_ClockSetup:
    504                           	callstack 0
    505  0000                     
    506                           	psect	rparam
@@ -1135,10 +1135,10 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Mon Feb 01 21:04:28 2021
+Symbol Table                                                                                   Tue Feb 02 11:16:59 2021
 
-     __size_of_SysTickSetup 0022                          l13 FF56                          l22 FF44  
-                        l16 FF42                          l19 FF78                          l64 FFFA  
+     __size_of_SysTickSetup 0022                          l13 FF42                          l22 FF44  
+                        l16 FF56                          l19 FF78                          l64 FFFA  
                         l57 FF46                          u10 FFD2                          u11 FFCE  
                         u27 FFE2                         l740 FF48                         l750 FFF0  
                        l752 FFF6                         l744 FFC2                         l746 FFD2  
@@ -1147,27 +1147,26 @@ Symbol Table                                                                    
                        l768 FF58                         l776 FF84                         l778 FF88  
                        wreg 0004E8                        _LATA 0004BE                        _main FF7A  
               _SysTickSetup FF58                        start FFFC        __size_of_SystemSleep 0002  
-              ___param_bank 000000                  _ClockSetup FF48                       ?_main 050E  
-                     _TRISA 0004C6                       tablat 0004F5                       status 0004D8  
-           __initialization FF9C                __end_of_main FF9C                      ??_main 0510  
-             __activetblptr 000000                      _ANSELA 000400          __size_of_GpioSetup 0002  
-               ?_ClockSetup 050E                      clear_0 FFB6                __pdataCOMRAM 0510  
-                    tblptrh 0004F7                      tblptrl 0004F6                      tblptru 0004F8  
-                _UserAppRun FFC2                  __accesstop 0560     __end_of__initialization FFBC  
-             ___rparam_used 000001            _G_u8UserAppFlags 050D              __pcstackCOMRAM 050E  
-         __end_of_GpioSetup FF44         __size_of_ClockSetup 0010                 ?_UserAppRun 050E  
-             ??_SystemSleep 050E                     __Hparam 0000                     __Lparam 0000  
-                   __pcinit FF9C                     __ramtop 2600                     __ptext0 FF7A  
-                   __ptext1 FFC2                     __ptext2 FF46                     __ptext3 FF44  
-                   __ptext4 FF58                     __ptext5 FF42                     __ptext6 FF48  
-      end_of_initialization FFBC            _G_u32SystemFlags 0501                     postinc0 0004EE  
-       __end_of_SystemSleep FF46                ??_ClockSetup 050E         __size_of_UserAppRun 003A  
-        __end_of_ClockSetup FF58               __pidataCOMRAM FF41                   _GpioSetup FF42  
-       start_initialization FF9C               ?_SysTickSetup 050E                 _SystemSleep FF44  
-                ?_GpioSetup 050E                 __pbssCOMRAM 0501           _UserAppInitialize FF46  
-              ??_UserAppRun 050E          ?_UserAppInitialize 050E              ??_SysTickSetup 050E  
-       ??_UserAppInitialize 050E          __end_of_UserAppRun FFFC   __end_of_UserAppInitialize FF48  
-               ??_GpioSetup 050E                    __Hrparam 0000                    __Lrparam 0000  
-      __end_of_SysTickSetup FF7A  __size_of_UserAppInitialize 0002         UserAppRun@u8counter 0510  
-             __size_of_main 0022                ?_SystemSleep 050E          _G_u32SystemTime1ms 0509  
-         _G_u32SystemTime1s 0505  
+              ___param_bank 000000                  _ClockSetup FF42                       ?_main 050E  
+                     _TRISA 0004C6                       tablat 0004F5             __initialization FF9C  
+              __end_of_main FF9C                      ??_main 0510               __activetblptr 000000  
+                    _ANSELA 000400          __size_of_GpioSetup 0010                 ?_ClockSetup 050E  
+                    clear_0 FFB6                __pdataCOMRAM 0510                      tblptrh 0004F7  
+                    tblptrl 0004F6                      tblptru 0004F8                  _UserAppRun FFC2  
+                __accesstop 0560     __end_of__initialization FFBC               ___rparam_used 000001  
+          _G_u8UserAppFlags 050D              __pcstackCOMRAM 050E           __end_of_GpioSetup FF58  
+       __size_of_ClockSetup 0002                 ?_UserAppRun 050E               ??_SystemSleep 050E  
+                   __Hparam 0000                     __Lparam 0000                     __pcinit FF9C  
+                   __ramtop 2600                     __ptext0 FF7A                     __ptext1 FFC2  
+                   __ptext2 FF46                     __ptext3 FF44                     __ptext4 FF58  
+                   __ptext5 FF48                     __ptext6 FF42        end_of_initialization FFBC  
+          _G_u32SystemFlags 0501                     postinc0 0004EE         __end_of_SystemSleep FF46  
+              ??_ClockSetup 050E         __size_of_UserAppRun 003A          __end_of_ClockSetup FF44  
+             __pidataCOMRAM FF41                   _GpioSetup FF48         start_initialization FF9C  
+             ?_SysTickSetup 050E                 _SystemSleep FF44                  ?_GpioSetup 050E  
+               __pbssCOMRAM 0501           _UserAppInitialize FF46                ??_UserAppRun 050E  
+        ?_UserAppInitialize 050E              ??_SysTickSetup 050E         ??_UserAppInitialize 050E  
+        __end_of_UserAppRun FFFC   __end_of_UserAppInitialize FF48                 ??_GpioSetup 050E  
+                  __Hrparam 0000                    __Lrparam 0000        __end_of_SysTickSetup FF7A  
+__size_of_UserAppInitialize 0002         UserAppRun@u8counter 0510               __size_of_main 0022  
+              ?_SystemSleep 050E          _G_u32SystemTime1ms 0509           _G_u32SystemTime1s 0505  

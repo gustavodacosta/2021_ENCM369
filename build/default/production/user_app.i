@@ -27316,12 +27316,12 @@ void UserAppInitialize(void)
 void UserAppRun(void)
 {
     static u8 u8counter = 0x80;
-    if(u8counter < 0xFF){
+    if(u8counter <= 0xBF){
         LATA = u8counter;
         _delay((unsigned long)((250)*((u32)64000000/4000.0)));
-        u8counter++;
+        u8counter += 0x01;
     }
     else{
-        u8counter = 0x80;
+       u8counter = 0x80;
     }
 }

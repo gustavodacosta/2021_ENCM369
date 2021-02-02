@@ -15,7 +15,7 @@ __HRAM 0 0 ABS 0
 __LRAM 1 0 ABS 0
 __Hconfig 30000A 0 CONFIG 4
 __Lconfig 0 0 CONFIG 4
-__end_of_GpioSetup 1FF44 0 CODE 0
+__end_of_GpioSetup 1FF58 0 CODE 0
 __Hbigram 0 0 ABS 0
 __Lbigram 0 0 ABS 0
 __Hrparam 0 0 COMRAM 1
@@ -79,7 +79,7 @@ __Hibigdata 0 0 CODE 0
 __Libigdata 0 0 CODE 0
 __Hifardata 0 0 CODE 0
 __Lifardata 0 0 CODE 0
-_GpioSetup 1FF42 0 CODE 0
+_GpioSetup 1FF48 0 CODE 0
 __Hbank5 0 0 ABS 0
 __Lbank5 0 0 ABS 0
 __Hpowerup 0 0 CODE 0
@@ -111,8 +111,8 @@ __Ltext5 0 0 ABS 0
 __ptext4 1FF58 0 CODE 0
 __Htext6 0 0 ABS 0
 __Ltext6 0 0 ABS 0
-__ptext5 1FF42 0 CODE 0
-__ptext6 1FF48 0 CODE 0
+__ptext5 1FF48 0 CODE 0
+__ptext6 1FF42 0 CODE 0
 __HbssCOMRAM 0 0 ABS 0
 __LbssCOMRAM 0 0 ABS 0
 __pbssCOMRAM 501 0 COMRAM 1
@@ -228,14 +228,14 @@ __pidataCOMRAM 1FF41 0 CODE 0
 __smallconst 0 0 SMALLCONST 0
 __Hreset_vec 4 0 CODE 0
 __Lreset_vec 0 0 CODE 0
-_ClockSetup 1FF48 0 CODE 0
+_ClockSetup 1FF42 0 CODE 0
 __accesstop 560 0 ABS 0
 intlevel0 0 0 CODE 0
 intlevel1 0 0 CODE 0
 __size_of_SysTickSetup 0 0 ABS 0
 intlevel2 0 0 CODE 0
 intlevel3 0 0 CODE 0
-__end_of_ClockSetup 1FF58 0 CODE 0
+__end_of_ClockSetup 1FF44 0 CODE 0
 __HdataCOMRAM 0 0 ABS 0
 __LdataCOMRAM 0 0 ABS 0
 __pdataCOMRAM 510 0 COMRAM 1
@@ -251,15 +251,15 @@ text1 1FFC2 1FFFB CODE 1FFC2 0
 cinit 1FF9C 1FFC1 CODE 1FF9C 0
 text0 1FF7A 1FF9B CODE 1FF7A 0
 text4 1FF58 1FF79 CODE 1FF58 0
-text6 1FF48 1FF57 CODE 1FF48 0
+text5 1FF48 1FF57 CODE 1FF48 0
 text2 1FF46 1FF47 CODE 1FF46 0
 text3 1FF44 1FF45 CODE 1FF44 0
-text5 1FF42 1FF43 CODE 1FF42 0
+text6 1FF42 1FF43 CODE 1FF42 0
 idataCOMRAM 1FF41 1FF41 CODE 1FF41 0
 %locals
 dist/default/production\2021_ENCM369.production.o
 C:/Program Files/Microchip/MPLABX/v5_45/packs/Microchip/PIC18F-Q_DFP/1.8.154/xc8\pic\include\proc\pic18f27q43.h
-C:\Users\GUSTAV~1\AppData\Local\Temp\sh84.s
+C:\Users\GUSTAV~1\AppData\Local\Temp\sjpk.s
 5090 1FF9C 0 CODE 0
 5092 1FF9C 0 CODE 0
 5095 1FF9C 0 CODE 0
@@ -302,19 +302,19 @@ user_app.c
 76 1FF46 0 CODE 0
 80 1FF46 0 CODE 0
 encm369_pic18.c
-131 1FF44 0 CODE 0
-134 1FF44 0 CODE 0
+132 1FF44 0 CODE 0
+135 1FF44 0 CODE 0
 encm369_pic18.c
-109 1FF58 0 CODE 0
-111 1FF58 0 CODE 0
-112 1FF68 0 CODE 0
-114 1FF78 0 CODE 0
+110 1FF58 0 CODE 0
+112 1FF58 0 CODE 0
+113 1FF68 0 CODE 0
+115 1FF78 0 CODE 0
 encm369_pic18.c
-90 1FF42 0 CODE 0
-94 1FF42 0 CODE 0
+89 1FF48 0 CODE 0
+91 1FF48 0 CODE 0
+92 1FF4C 0 CODE 0
+93 1FF50 0 CODE 0
+95 1FF56 0 CODE 0
 encm369_pic18.c
-70 1FF48 0 CODE 0
-72 1FF48 0 CODE 0
-73 1FF4C 0 CODE 0
-74 1FF52 0 CODE 0
-75 1FF56 0 CODE 0
+70 1FF42 0 CODE 0
+74 1FF42 0 CODE 0
