@@ -69,8 +69,9 @@ Promises:
 */
 void ClockSetup(void)
 {
- 
-  
+    TRISA = 0x00;  //sets pins to output
+    ANSELA = 0x00; //sets pins to digital
+    LATA = 0x00;   //sets pins off to begin
 } /* end ClockSetup */
 
 

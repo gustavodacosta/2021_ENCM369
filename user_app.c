@@ -94,8 +94,15 @@ Promises:
 */
 void UserAppRun(void)
 {
-
-
+    static u8 u8counter = 0x80; //sets RA7 on while other ports start off 
+    if(u8counter < 0xFF){
+        LATA = u8counter; //turns pins on based on value of u8counter
+        __delay_ms(250);  //delay for 250 milliseconds
+        u8counter++;      //update counter
+    }
+    else{
+        u8counter = 0x80; //ensure u8counter goes back to 0x80 at the end of the function
+    }
 } /* end UserAppRun */
 
 
