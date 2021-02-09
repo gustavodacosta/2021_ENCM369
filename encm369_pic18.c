@@ -88,10 +88,10 @@ Promises:
 */
 void GpioSetup(void)
 {
-    LATA = 0x00;    //sets pins off to begin
-    TRISA = 0x00;  //sets pins to output
-    ANSELA = 0x00;    //sets pins to digital   
-    //RA7 = 1;
+    LATA = 0x00;     //sets pins off to begin
+    TRISA = 0x00;    //sets pins to output
+    ANSELA = 0x00;   //sets pins to digital 
+    RA7 = 1;         //sets pin RA7 on
 } /* end GpioSetup() */
 
 
