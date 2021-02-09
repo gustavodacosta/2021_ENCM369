@@ -103,6 +103,7 @@ void UserAppRun(void)
     else{
        u8counter = 0x80;        //ensure u8counter goes back to 0x80 at the end of the function
     }
+    //hello
 } /* end UserAppRun */
 
 
