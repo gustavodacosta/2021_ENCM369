@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Tue Feb 09 16:26:50 2021
+                                                                                               Mon Feb 15 16:57:57 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	18F27Q43
@@ -272,7 +272,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    238                           	callstack 127
    239  01FFC2                     
    240                           ;user_app.c: 97:     static u8 u8counter = 0x80;;user_app.c: 98:     if(u8counter <= 0xB
-      +                          F){
+      +                          F)
    241  01FFC2  0EC0               	movlw	192
    242  01FFC4  6010               	cpfslt	UserAppRun@u8counter^(0+1280),c
    243  01FFC6  EFE7  F0FF         	goto	u11
@@ -281,10 +281,10 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    246  01FFCE  EFFB  F0FF         	goto	l756
    247  01FFD2                     u10:
    248  01FFD2                     
-   249                           ;user_app.c: 99:         LATA = u8counter;
+   249                           ;user_app.c: 99:     {;user_app.c: 100:         LATA = u8counter;
    250  01FFD2  0061  F440  F4BE   	movff	UserAppRun@u8counter,1214	;volatile
    251  01FFD8                     
-   252                           ;user_app.c: 100:         _delay((unsigned long)((250)*((u32)64000000/4000.0)));
+   252                           ;user_app.c: 101:         _delay((unsigned long)((250)*((u32)64000000/4000.0)));
    253  01FFD8  0E15               	movlw	21
    254  01FFDA  6E0F               	movwf	(??_UserAppRun+1)^(0+1280),c
    255  01FFDC  0E4B               	movlw	75
@@ -299,14 +299,14 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    264  01FFEC  D7FA               	bra	u27
    265  01FFEE  D000               	nop2	
    266  01FFF0                     
-   267                           ;user_app.c: 101:         u8counter += 0x01;
+   267                           ;user_app.c: 102:         u8counter += 0x01;
    268  01FFF0  2A10               	incf	UserAppRun@u8counter^(0+1280),f,c
    269                           
-   270                           ;user_app.c: 102:     }
+   270                           ;user_app.c: 103:     }
    271  01FFF2  EFFD  F0FF         	goto	l66
    272  01FFF6                     l756:
    273                           
-   274                           ;user_app.c: 104:        u8counter = 0x80;
+   274                           ;user_app.c: 105:     {;user_app.c: 106:        u8counter = 0x80;
    275  01FFF6  0E80               	movlw	128
    276  01FFF8  6E10               	movwf	UserAppRun@u8counter^(0+1280),c
    277  01FFFA                     l66:
@@ -1140,7 +1140,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Tue Feb 09 16:26:50 2021
+Symbol Table                                                                                   Mon Feb 15 16:57:57 2021
 
      __size_of_SysTickSetup 0022                          l21 FF78                          l15 FF40  
                         l24 FF42                          l18 FF56                          l66 FFFA  

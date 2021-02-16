@@ -2557,34 +2557,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 128 `i `uc
 ]
 "98
-[; ;user_app.c: 98:     if(u8counter <= 0xBF){
+[; ;user_app.c: 98:     if(u8counter <= 0xBF)
 [e $ ! <= -> F15920 `i -> 191 `i 2274  ]
-{
 "99
-[; ;user_app.c: 99:         LATA = u8counter;
-[e = _LATA F15920 ]
+[; ;user_app.c: 99:     {
+{
 "100
-[; ;user_app.c: 100:         _delay((unsigned long)((250)*((u32)64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> -> 64000000 `l `ul `d .4000.0 `ul ]
+[; ;user_app.c: 100:         LATA = u8counter;
+[e = _LATA F15920 ]
 "101
-[; ;user_app.c: 101:         u8counter += 0x01;
-[e =+ F15920 -> -> 1 `i `uc ]
+[; ;user_app.c: 101:         _delay((unsigned long)((250)*((u32)64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> -> 64000000 `l `ul `d .4000.0 `ul ]
 "102
-[; ;user_app.c: 102:     }
+[; ;user_app.c: 102:         u8counter += 0x01;
+[e =+ F15920 -> -> 1 `i `uc ]
+"103
+[; ;user_app.c: 103:     }
 }
 [e $U 2275  ]
-"103
-[; ;user_app.c: 103:     else{
-[e :U 2274 ]
-{
 "104
-[; ;user_app.c: 104:        u8counter = 0x80;
-[e = F15920 -> -> 128 `i `uc ]
+[; ;user_app.c: 104:     else
+[e :U 2274 ]
 "105
-[; ;user_app.c: 105:     }
+[; ;user_app.c: 105:     {
+{
+"106
+[; ;user_app.c: 106:        u8counter = 0x80;
+[e = F15920 -> -> 128 `i `uc ]
+"107
+[; ;user_app.c: 107:     }
 }
 [e :U 2275 ]
-"106
-[; ;user_app.c: 106: }
+"108
+[; ;user_app.c: 108: }
 [e :UE 2273 ]
 }
