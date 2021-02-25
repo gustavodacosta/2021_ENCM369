@@ -2556,9 +2556,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> -> 128 `i `l `ul
 ]
 "98
-[; ;user_app.c: 98:     u8 u8ButtonLastState = 0;
+[; ;user_app.c: 98:     u8 u8ButtonLastState = RB5;
 [v _u8ButtonLastState `uc ~T0 @X0 1 a ]
-[e = _u8ButtonLastState -> -> 0 `i `uc ]
+[e = _u8ButtonLastState -> _RB5 `uc ]
 "99
 [; ;user_app.c: 99:     u8 u8Button;
 [v _u8Button `uc ~T0 @X0 1 a ]
@@ -2578,11 +2578,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_app.c: 104:         {
 {
 "105
-[; ;user_app.c: 105:             LATA = u32counter;
-[e = _LATA -> F15920 `uc ]
-"106
-[; ;user_app.c: 106:             u32counter++;
+[; ;user_app.c: 105:             u32counter++;
 [e ++ F15920 -> -> -> 1 `i `l `ul ]
+"106
+[; ;user_app.c: 106:             LATA = u32counter;
+[e = _LATA -> F15920 `uc ]
 "107
 [; ;user_app.c: 107:         }
 }

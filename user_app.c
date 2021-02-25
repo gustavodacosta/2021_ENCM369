@@ -102,8 +102,8 @@ void UserAppRun(void)
         u8Button = RB5;
         if(u8Button == 0x01 && u8ButtonLastState == 0x00)  //checks for rising edge, checks for button press 
         {
-            LATA = u32counter;          //turns on pins based on value of u8counter
             u32counter++;               //update counter
+            LATA = u32counter;          //turns on pins based on value of u8counter
         }
         u8ButtonLastState = u8Button;   //have both button state variable equal each other
         if(u32counter > 0x000000BF)

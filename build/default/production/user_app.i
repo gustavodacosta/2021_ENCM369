@@ -27316,15 +27316,15 @@ void UserAppInitialize(void)
 void UserAppRun(void)
 {
     static u32 u32counter = 0x00000080;
-    u8 u8ButtonLastState = 0;
+    u8 u8ButtonLastState = RB5;
     u8 u8Button;
     while(1)
     {
         u8Button = RB5;
         if(u8Button == 0x01 && u8ButtonLastState == 0x00)
         {
-            LATA = u32counter;
             u32counter++;
+            LATA = u32counter;
         }
         u8ButtonLastState = u8Button;
         if(u32counter > 0x000000BF)
