@@ -94,16 +94,22 @@ Promises:
 */
 void UserAppRun(void)
 {
-    static u8 u8counter = 0x80; //counter starts at 0 for all 6 pins used, keeps RA7 on 
-    if(u8counter <= 0xBF)
+    static u32 u32counter = 0x00000080; //counter starts at 0 for all 6 pins used, keeps RA7 on 
+    u8 u8ButtonLastState = RB5;         //ButtonLastStae starts high
+    u8 u8Button;                        //checks for current state of button
+    while(1)
     {
-        LATA = u8counter;       //turns pins on based on value of u8counter
-        __delay_ms(250);        //delay for 250 milliseconds
-        u8counter += 0x01;      //update counter
-    }
-    else
-    {
-       u8counter = 0x80;        //ensure u8counter goes back to 0x80 at the end of the function
+        u8Button = RB5;
+        if(u8Button == 0x01 && u8ButtonLastState == 0x00)  //checks for rising edge, checks for button press 
+        {
+            LATA = u32counter;          //turns on pins based on value of u8counter
+            u32counter++;               //update counter
+        }
+        u8ButtonLastState = u8Button;   //have both button state variable equal each other
+        if(u32counter > 0x000000BF)
+        {
+            u32counter = 0x00000080;    //ensure u8counter goes back to 0x80 at the end of the function
+        }
     }
 } /* end UserAppRun */
 

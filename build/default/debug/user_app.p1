@@ -2556,60 +2556,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> -> 128 `i `l `ul
 ]
 "98
-[; ;user_app.c: 98:     u8 u8ButtonLastState = 0;
+[; ;user_app.c: 98:     u8 u8ButtonLastState = RB5;
 [v _u8ButtonLastState `uc ~T0 @X0 1 a ]
-[e = _u8ButtonLastState -> -> 0 `i `uc ]
+[e = _u8ButtonLastState -> _RB5 `uc ]
 "99
 [; ;user_app.c: 99:     u8 u8Button;
 [v _u8Button `uc ~T0 @X0 1 a ]
-"100
-[; ;user_app.c: 100:     while(1)
-[e :U 2275 ]
 "101
-[; ;user_app.c: 101:     {
-{
+[; ;user_app.c: 101:     while(1)
+[e :U 2275 ]
 "102
-[; ;user_app.c: 102:         u8Button = RB5;
-[e = _u8Button -> _RB5 `uc ]
-"103
-[; ;user_app.c: 103:         if(u8Button == 0x01 && u8ButtonLastState == 0x00)
-[e $ ! && == -> _u8Button `i -> 1 `i == -> _u8ButtonLastState `i -> 0 `i 2277  ]
-"104
-[; ;user_app.c: 104:         {
+[; ;user_app.c: 102:     {
 {
+"103
+[; ;user_app.c: 103:         u8Button = RB5;
+[e = _u8Button -> _RB5 `uc ]
+"104
+[; ;user_app.c: 104:         if(u8Button == 0x01 && u8ButtonLastState == 0x00)
+[e $ ! && == -> _u8Button `i -> 1 `i == -> _u8ButtonLastState `i -> 0 `i 2277  ]
 "105
-[; ;user_app.c: 105:             LATA = u32counter;
-[e = _LATA -> F15920 `uc ]
+[; ;user_app.c: 105:         {
+{
 "106
-[; ;user_app.c: 106:             u32counter++;
-[e ++ F15920 -> -> -> 1 `i `l `ul ]
+[; ;user_app.c: 106:             LATA = u32counter;
+[e = _LATA -> F15920 `uc ]
 "107
-[; ;user_app.c: 107:         }
+[; ;user_app.c: 107:             u32counter++;
+[e ++ F15920 -> -> -> 1 `i `l `ul ]
+"108
+[; ;user_app.c: 108:         }
 }
 [e :U 2277 ]
-"108
-[; ;user_app.c: 108:         u8ButtonLastState = u8Button;
-[e = _u8ButtonLastState _u8Button ]
 "109
-[; ;user_app.c: 109:         if(u32counter > 0x000000BF)
-[e $ ! > F15920 -> -> -> 191 `i `l `ul 2278  ]
+[; ;user_app.c: 109:         u8ButtonLastState = u8Button;
+[e = _u8ButtonLastState _u8Button ]
 "110
-[; ;user_app.c: 110:         {
-{
-"111
-[; ;user_app.c: 111:             u32counter = 0x00000080;
-[e = F15920 -> -> -> 128 `i `l `ul ]
-"112
-[; ;user_app.c: 112:         }
-}
-[e :U 2278 ]
-"113
-[; ;user_app.c: 113:     }
+[; ;user_app.c: 110:     }
 }
 [e :U 2274 ]
 [e $U 2275  ]
 [e :U 2276 ]
-"114
-[; ;user_app.c: 114: }
+"138
+[; ;user_app.c: 138: }
 [e :UE 2273 ]
 }

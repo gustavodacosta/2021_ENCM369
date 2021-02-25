@@ -27316,8 +27316,9 @@ void UserAppInitialize(void)
 void UserAppRun(void)
 {
     static u32 u32counter = 0x00000080;
-    u8 u8ButtonLastState = 0;
+    u8 u8ButtonLastState = RB5;
     u8 u8Button;
+
     while(1)
     {
         u8Button = RB5;
@@ -27327,9 +27328,6 @@ void UserAppRun(void)
             u32counter++;
         }
         u8ButtonLastState = u8Button;
-        if(u32counter > 0x000000BF)
-        {
-            u32counter = 0x00000080;
-        }
     }
+# 138 "user_app.c"
 }
