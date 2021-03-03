@@ -27289,7 +27289,6 @@ void SystemSleep(void);
 # 27 "./user_app.h"
 void UserAppInitialize(void);
 void UserAppRun(void);
-void TimeXus(u16 u16Count);
 # 106 "./configuration.h" 2
 # 26 "user_app.c" 2
 
@@ -27329,7 +27328,7 @@ void TimeXus(u16 u16Count)
 
     u16 u16TimeLeft = 0xFFFF - u16Count;
     TMR0H = u16TimeLeft >> 8;
-    TMR0L = u16TimeLeft & 0x0F;
+    TMR0L = u16TimeLeft << 8;
 
 
 
@@ -27339,13 +27338,15 @@ void TimeXus(u16 u16Count)
 # 133 "user_app.c"
 void UserAppRun(void)
 {
-# 146 "user_app.c"
-    static u16 u16counter = 0x0000;
-    u16counter++;
-    if(u16counter == 0x01F4)
+    static u8 u8counter = 0x80;
+    if(u8counter <= 0xBF)
     {
-        RA0^1;
-        u16counter = 0x0000;
-    }
+        LATA = u8counter;
 
+        u8counter += 0x01;
+    }
+    else
+    {
+       u8counter = 0x80;
+    }
 }

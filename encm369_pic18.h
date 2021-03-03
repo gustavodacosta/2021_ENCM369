@@ -32,7 +32,7 @@ Type Definitions
 ***********************************************************************************************************************/
 #define SYS_FREQ                  (u32)64000000
 #define FCY                       SYS_FREQ/4
-#define _XTAL_FREQ                (u32)64000000
+//#define _XTAL_FREQ                (u32)64000000
 #define OSC_VALUE                 (u32)64000000                              /*!< @brief Internal oscillator value */
 #define MAINCK                    OSC_VALUE/4                                /*!< @brief Main clock is base frequency / 4 */
 
@@ -41,8 +41,8 @@ Type Definitions
 /***********************************************************************************************************************
 * Macros
 ***********************************************************************************************************************/
-#define HEARTBEAT_ON()          /*!< @brief Turns on Heartbeat LED */
-#define HEARTBEAT_OFF()         /*!< @brief Turns off Heartbeat LED */
+#define HEARTBEAT_ON()          (LATA |= 0x80)  /*!< @brief Turns on Heartbeat LED */
+#define HEARTBEAT_OFF()         (LATA &= 0x7F)  /*!< @brief Turns off Heartbeat LED */
 
 
 /***********************************************************************************************************************

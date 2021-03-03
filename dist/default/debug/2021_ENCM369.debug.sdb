@@ -39,28 +39,20 @@
 [v _main main `(v  1 e 1 0 ]
 "76 C:\GitHub\2021_ENCM369\user_app.c
 [v _UserAppInitialize UserAppInitialize `(v  1 e 1 0 ]
-"105
-[v _TimeXus TimeXus `(v  1 e 1 0 ]
-"133
+"102
 [v _UserAppRun UserAppRun `(v  1 e 1 0 ]
-"22235 C:/Program Files/Microchip/MPLABX/v5_45/packs/Microchip/PIC18F-Q_DFP/1.8.154/xc8\pic\include\proc\pic18f27q43.h
-[v _TMR0L TMR0L `VEuc  1 e 1 @792 ]
-"22373
-[v _TMR0H TMR0H `VEuc  1 e 1 @793 ]
-"22627
+"22627 C:/Program Files/Microchip/MPLABX/v5_45/packs/Microchip/PIC18F-Q_DFP/1.8.154/xc8\pic\include\proc\pic18f27q43.h
 [v _T0CON0 T0CON0 `VEuc  1 e 1 @794 ]
 "22725
 [v _T0CON1 T0CON1 `VEuc  1 e 1 @795 ]
 "37918
 [v _ANSELA ANSELA `VEuc  1 e 1 @1024 ]
-"44870
-[v _PIR3 PIR3 `VEuc  1 e 1 @1201 ]
 "45585
 [v _LATA LATA `VEuc  1 e 1 @1214 ]
 "45840
 [v _TRISA TRISA `VEuc  1 e 1 @1222 ]
-"53732
-[v _RA0 RA0 `VEb  1 e 0 @9840 ]
+"53900
+[v _RA7 RA7 `VEb  1 e 0 @9847 ]
 "14 C:\GitHub\2021_ENCM369\main.c
 [v _G_u32SystemTime1ms G_u32SystemTime1ms `VEul  1 e 4 0 ]
 "15
@@ -72,28 +64,19 @@
 "35 C:\GitHub\2021_ENCM369\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"82
+"67
 } 0
-"133 C:\GitHub\2021_ENCM369\user_app.c
+"102 C:\GitHub\2021_ENCM369\user_app.c
 [v _UserAppRun UserAppRun `(v  1 e 1 0 ]
 {
-"146
-[v UserAppRun@u16counter u16counter `us  1 s 2 u16counter ]
-"154
+"104
+[v UserAppRun@u8counter u8counter `uc  1 s 1 u8counter ]
+"115
 } 0
 "76
 [v _UserAppInitialize UserAppInitialize `(v  1 e 1 0 ]
 {
 "87
-} 0
-"105
-[v _TimeXus TimeXus `(v  1 e 1 0 ]
-{
-"111
-[v TimeXus@u16TimeLeft u16TimeLeft `us  1 a 2 2 ]
-"105
-[v TimeXus@u16Count u16Count `us  1 p 2 0 ]
-"119
 } 0
 "132 C:\GitHub\2021_ENCM369\encm369_pic18.c
 [v _SystemSleep SystemSleep `(v  1 e 1 0 ]

@@ -1,4 +1,4 @@
-# 1 "user_app.c"
+# 1 "encm369_pic18.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5_45/packs/Microchip/PIC18F-Q_DFP/1.8.154/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "user_app.c" 2
-# 26 "user_app.c"
+# 1 "encm369_pic18.c" 2
+# 24 "encm369_pic18.c"
 # 1 "./configuration.h" 1
 # 30 "./configuration.h"
 #pragma config FEXTOSC = OFF
@@ -27289,63 +27289,35 @@ void SystemSleep(void);
 # 27 "./user_app.h"
 void UserAppInitialize(void);
 void UserAppRun(void);
-void TimeXus(u16 u16Count);
 # 106 "./configuration.h" 2
-# 26 "user_app.c" 2
-
-
-
-
-
-
-
-volatile u8 G_u8UserAppFlags;
-
-
-
-
+# 24 "encm369_pic18.c" 2
+# 37 "encm369_pic18.c"
 extern volatile u32 G_u32SystemTime1ms;
 extern volatile u32 G_u32SystemTime1s;
 extern volatile u32 G_u32SystemFlags;
-# 76 "user_app.c"
-void UserAppInitialize(void)
+# 70 "encm369_pic18.c"
+void ClockSetup(void)
 {
-
-    LATA = 0x80;
-
-
-
-    T0CON0 = 0x90;
-    T0CON1 = 0x54;
 
 
 }
-# 105 "user_app.c"
-void TimeXus(u16 u16Count)
+# 89 "encm369_pic18.c"
+void GpioSetup(void)
 {
-
-    T0CON0 = T0CON0 & 0x7F;
-
-
-    u16 u16TimeLeft = 0xFFFF - u16Count;
-    TMR0H = u16TimeLeft >> 8;
-    TMR0L = u16TimeLeft & 0x0F;
-
-
-
-    PIR3 = PIR3 & 0x7F;
-    T0CON0 = T0CON0 + 0x80;
+    LATA = 0x00;
+    TRISA = 0x00;
+    ANSELA = 0x00;
+    RA7 = 1;
 }
-# 133 "user_app.c"
-void UserAppRun(void)
+# 110 "encm369_pic18.c"
+void SysTickSetup(void)
 {
-# 146 "user_app.c"
-    static u16 u16counter = 0x0000;
-    u16counter++;
-    if(u16counter == 0x01F4)
-    {
-        RA0^1;
-        u16counter = 0x0000;
-    }
+  G_u32SystemTime1ms = 0;
+  G_u32SystemTime1s = 0;
+
+}
+# 132 "encm369_pic18.c"
+void SystemSleep(void)
+{
 
 }

@@ -17,9 +17,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "44870
 [; ;C:/Program Files/Microchip/MPLABX/v5_45/packs/Microchip/PIC18F-Q_DFP/1.8.154/xc8\pic\include\proc\pic18f27q43.h: 44870: extern volatile unsigned char PIR3 __attribute__((address(0x4B1)));
 [v _PIR3 `Vuc ~T0 @X0 0 e@1201 ]
-"53732
-[; ;C:/Program Files/Microchip/MPLABX/v5_45/packs/Microchip/PIC18F-Q_DFP/1.8.154/xc8\pic\include\proc\pic18f27q43.h: 53732: extern volatile __bit RA0 __attribute__((address(0x2670)));
-[v _RA0 `Vb ~T0 @X0 0 e@9840 ]
 "30 ./configuration.h
 [p x FEXTOSC  =  OFF     ]
 "31
@@ -2589,8 +2586,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_app.c: 112:     TMR0H = u16TimeLeft >> 8;
 [e = _TMR0H -> >> -> _u16TimeLeft `ui -> 8 `i `uc ]
 "113
-[; ;user_app.c: 113:     TMR0L = u16TimeLeft & 0x0F;
-[e = _TMR0L -> & -> _u16TimeLeft `ui -> -> 15 `i `ui `uc ]
+[; ;user_app.c: 113:     TMR0L = u16TimeLeft << 8;
+[e = _TMR0L -> << -> _u16TimeLeft `ui -> 8 `i `uc ]
 "117
 [; ;user_app.c: 117:     PIR3 = PIR3 & 0x7F;
 [e = _PIR3 -> & -> _PIR3 `i -> 127 `i `uc ]
@@ -2609,32 +2606,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _UserAppRun ]
 [f ]
-"146
-[; ;user_app.c: 146:     static u16 u16counter = 0x0000;
-[v F15925 `us ~T0 @X0 1 s u16counter ]
-[i F15925
--> -> 0 `i `us
+"135
+[; ;user_app.c: 135:     static u8 u8counter = 0x80;
+[v F15923 `uc ~T0 @X0 1 s u8counter ]
+[i F15923
+-> -> 128 `i `uc
 ]
-"147
-[; ;user_app.c: 147:     u16counter++;
-[e ++ F15925 -> -> 1 `i `us ]
-"148
-[; ;user_app.c: 148:     if(u16counter == 0x01F4)
-[e $ ! == -> F15925 `ui -> -> 500 `i `ui 2275  ]
-"149
-[; ;user_app.c: 149:     {
+"136
+[; ;user_app.c: 136:     if(u8counter <= 0xBF)
+[e $ ! <= -> F15923 `i -> 191 `i 2275  ]
+"137
+[; ;user_app.c: 137:     {
 {
-"150
-[; ;user_app.c: 150:         RA0^1;
-[e ^ -> _RA0 `i -> 1 `i ]
-"151
-[; ;user_app.c: 151:         u16counter = 0x0000;
-[e = F15925 -> -> 0 `i `us ]
-"152
-[; ;user_app.c: 152:     }
+"138
+[; ;user_app.c: 138:         LATA = u8counter;
+[e = _LATA F15923 ]
+"140
+[; ;user_app.c: 140:         u8counter += 0x01;
+[e =+ F15923 -> -> 1 `i `uc ]
+"141
+[; ;user_app.c: 141:     }
 }
+[e $U 2276  ]
+"142
+[; ;user_app.c: 142:     else
 [e :U 2275 ]
-"154
-[; ;user_app.c: 154: }
+"143
+[; ;user_app.c: 143:     {
+{
+"144
+[; ;user_app.c: 144:        u8counter = 0x80;
+[e = F15923 -> -> 128 `i `uc ]
+"145
+[; ;user_app.c: 145:     }
+}
+[e :U 2276 ]
+"146
+[; ;user_app.c: 146: }
 [e :UE 2274 ]
 }
