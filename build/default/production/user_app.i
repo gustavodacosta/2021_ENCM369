@@ -27321,13 +27321,13 @@ void UserAppInitialize(void)
 
 }
 # 105 "user_app.c"
-void TimeXus(u16 u16Count)
+void TimeXus(u16 u16TimeInput)
 {
 
     T0CON0 = T0CON0 & 0x7F;
 
 
-    u16 u16TimeLeft = 0xFFFF - u16Count;
+    u16 u16TimeLeft = 0xFFFF - u16TimeInput;
     TMR0H = u16TimeLeft >> 8;
     TMR0L = u16TimeLeft & 0x0F;
 
@@ -27339,13 +27339,21 @@ void TimeXus(u16 u16Count)
 # 133 "user_app.c"
 void UserAppRun(void)
 {
-# 146 "user_app.c"
     static u16 u16counter = 0x0000;
-    u16counter++;
-    if(u16counter == 0x01F4)
+    u8 au8Pattern[9] = { 0x21, 0x12, 0x0C, 0x20, 0x10, 0x08, 0x01, 0x02, 0x04 };
+    static u8 u8counter = 0x00;
+    if(u16counter < 0x01F4)
     {
-        RA0^1;
+        u16counter += 0x0001;
+    }
+    else
+    {
+        LATA = au8Pattern[u8counter];
+        u8counter += 0x01;
+        if(u8counter == 0x09)
+        {
+            u8counter = 0x00;
+        }
         u16counter = 0x0000;
     }
-
 }

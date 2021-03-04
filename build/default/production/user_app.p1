@@ -17,9 +17,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "44870
 [; ;C:/Program Files/Microchip/MPLABX/v5_45/packs/Microchip/PIC18F-Q_DFP/1.8.154/xc8\pic\include\proc\pic18f27q43.h: 44870: extern volatile unsigned char PIR3 __attribute__((address(0x4B1)));
 [v _PIR3 `Vuc ~T0 @X0 0 e@1201 ]
-"53732
-[; ;C:/Program Files/Microchip/MPLABX/v5_45/packs/Microchip/PIC18F-Q_DFP/1.8.154/xc8\pic\include\proc\pic18f27q43.h: 53732: extern volatile __bit RA0 __attribute__((address(0x2670)));
-[v _RA0 `Vb ~T0 @X0 0 e@9840 ]
 "30 ./configuration.h
 [p x FEXTOSC  =  OFF     ]
 "31
@@ -2566,15 +2563,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2272 ]
 }
 "105
-[; ;user_app.c: 105: void TimeXus(u16 u16Count)
+[; ;user_app.c: 105: void TimeXus(u16 u16TimeInput)
 [v _TimeXus `(v ~T0 @X0 1 ef1`us ]
 "106
 [; ;user_app.c: 106: {
 {
 [e :U _TimeXus ]
 "105
-[; ;user_app.c: 105: void TimeXus(u16 u16Count)
-[v _u16Count `us ~T0 @X0 1 r1 ]
+[; ;user_app.c: 105: void TimeXus(u16 u16TimeInput)
+[v _u16TimeInput `us ~T0 @X0 1 r1 ]
 "106
 [; ;user_app.c: 106: {
 [f ]
@@ -2582,9 +2579,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_app.c: 108:     T0CON0 = T0CON0 & 0x7F;
 [e = _T0CON0 -> & -> _T0CON0 `i -> 127 `i `uc ]
 "111
-[; ;user_app.c: 111:     u16 u16TimeLeft = 0xFFFF - u16Count;
+[; ;user_app.c: 111:     u16 u16TimeLeft = 0xFFFF - u16TimeInput;
 [v _u16TimeLeft `us ~T0 @X0 1 a ]
-[e = _u16TimeLeft -> - -> 65535 `ui -> _u16Count `ui `us ]
+[e = _u16TimeLeft -> - -> 65535 `ui -> _u16TimeInput `ui `us ]
 "112
 [; ;user_app.c: 112:     TMR0H = u16TimeLeft >> 8;
 [e = _TMR0H -> >> -> _u16TimeLeft `ui -> 8 `i `uc ]
@@ -2609,32 +2606,82 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _UserAppRun ]
 [f ]
-"146
-[; ;user_app.c: 146:     static u16 u16counter = 0x0000;
+"135
+[; ;user_app.c: 135:     static u16 u16counter = 0x0000;
 [v F15925 `us ~T0 @X0 1 s u16counter ]
 [i F15925
 -> -> 0 `i `us
 ]
-"147
-[; ;user_app.c: 147:     u16counter++;
-[e ++ F15925 -> -> 1 `i `us ]
-"148
-[; ;user_app.c: 148:     if(u16counter == 0x01F4)
-[e $ ! == -> F15925 `ui -> -> 500 `i `ui 2275  ]
-"149
-[; ;user_app.c: 149:     {
+[v F15926 `uc ~T0 @X0 -> 9 `i s ]
+[i F15926
+:U ..
+"136
+[; ;user_app.c: 136:     u8 au8Pattern[9] = { 0x21, 0x12, 0x0C, 0x20, 0x10, 0x08, 0x01, 0x02, 0x04 };
+-> -> 33 `i `uc
+-> -> 18 `i `uc
+-> -> 12 `i `uc
+-> -> 32 `i `uc
+-> -> 16 `i `uc
+-> -> 8 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 4 `i `uc
+..
+]
+[v _au8Pattern `uc ~T0 @X0 -> 9 `i a ]
+[e = _au8Pattern F15926 ]
+"137
+[; ;user_app.c: 137:     static u8 u8counter = 0x00;
+[v F15928 `uc ~T0 @X0 1 s u8counter ]
+[i F15928
+-> -> 0 `i `uc
+]
+"138
+[; ;user_app.c: 138:     if(u16counter < 0x01F4)
+[e $ ! < -> F15925 `ui -> -> 500 `i `ui 2275  ]
+"139
+[; ;user_app.c: 139:     {
 {
-"150
-[; ;user_app.c: 150:         RA0^1;
-[e ^ -> _RA0 `i -> 1 `i ]
-"151
-[; ;user_app.c: 151:         u16counter = 0x0000;
-[e = F15925 -> -> 0 `i `us ]
-"152
-[; ;user_app.c: 152:     }
+"140
+[; ;user_app.c: 140:         u16counter += 0x0001;
+[e =+ F15925 -> -> 1 `i `us ]
+"141
+[; ;user_app.c: 141:     }
 }
+[e $U 2276  ]
+"142
+[; ;user_app.c: 142:     else
 [e :U 2275 ]
-"154
-[; ;user_app.c: 154: }
+"143
+[; ;user_app.c: 143:     {
+{
+"144
+[; ;user_app.c: 144:         LATA = au8Pattern[u8counter];
+[e = _LATA *U + &U _au8Pattern * -> F15928 `ux -> -> # *U &U _au8Pattern `ui `ux ]
+"145
+[; ;user_app.c: 145:         u8counter += 0x01;
+[e =+ F15928 -> -> 1 `i `uc ]
+"146
+[; ;user_app.c: 146:         if(u8counter == 0x09)
+[e $ ! == -> F15928 `i -> 9 `i 2277  ]
+"147
+[; ;user_app.c: 147:         {
+{
+"148
+[; ;user_app.c: 148:             u8counter = 0x00;
+[e = F15928 -> -> 0 `i `uc ]
+"149
+[; ;user_app.c: 149:         }
+}
+[e :U 2277 ]
+"150
+[; ;user_app.c: 150:         u16counter = 0x0000;
+[e = F15925 -> -> 0 `i `us ]
+"151
+[; ;user_app.c: 151:     }
+}
+[e :U 2276 ]
+"152
+[; ;user_app.c: 152: }
 [e :UE 2274 ]
 }

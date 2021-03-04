@@ -27293,6 +27293,7 @@ void SystemSleep(void);
 # 27 "./user_app.h"
 void UserAppInitialize(void);
 void UserAppRun(void);
+void TimeXus(u16 u16Count);
 # 106 "./configuration.h" 2
 # 6 "main.c" 2
 
@@ -27335,7 +27336,7 @@ void main(void)
 
     (LATA &= 0x7F);
     SystemSleep();
-    TimeXus(10000);
+    TimeXus(1000);
     while(1)
     {
         if(PIR3 == 0x80)
@@ -27344,14 +27345,6 @@ void main(void)
         }
     }
     (LATA |= 0x80);
-    TimeXus(10000);
-    while(1)
-    {
-        if(PIR3 == 0x80){
-            break;
-        }
-    }
-
   }
 
 }

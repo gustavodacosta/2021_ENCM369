@@ -2605,44 +2605,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 "62
 [; ;main.c: 62:     SystemSleep();
 [e ( _SystemSleep ..  ]
-"64
-[; ;main.c: 64:     TimeXus(1000);
+"63
+[; ;main.c: 63:     TimeXus(1000);
 [e ( _TimeXus (1 -> -> 1000 `i `us ]
-"65
-[; ;main.c: 65:     while(1)
+"64
+[; ;main.c: 64:     while(1)
 [e :U 2277 ]
+"65
+[; ;main.c: 65:     {
+{
 "66
-[; ;main.c: 66:     {
-{
-"67
-[; ;main.c: 67:         if(PIR3 == 0x80)
+[; ;main.c: 66:         if(PIR3 == 0x80)
 [e $ ! == -> _PIR3 `i -> 128 `i 2279  ]
-"68
-[; ;main.c: 68:         {
+"67
+[; ;main.c: 67:         {
 {
-"69
-[; ;main.c: 69:             break;
+"68
+[; ;main.c: 68:             break;
 [e $U 2278  ]
-"70
-[; ;main.c: 70:         }
+"69
+[; ;main.c: 69:         }
 }
 [e :U 2279 ]
-"71
-[; ;main.c: 71:     }
+"70
+[; ;main.c: 70:     }
 }
 [e :U 2276 ]
 [e $U 2277  ]
 [e :U 2278 ]
-"72
-[; ;main.c: 72:     (LATA |= 0x80);
+"71
+[; ;main.c: 71:     (LATA |= 0x80);
 [e =| _LATA -> -> 128 `i `Vuc ]
-"80
-[; ;main.c: 80:   }
+"72
+[; ;main.c: 72:   }
 }
 [e :U 2273 ]
 [e $U 2274  ]
 [e :U 2275 ]
-"82
-[; ;main.c: 82: }
+"74
+[; ;main.c: 74: }
 [e :UE 2272 ]
 }

@@ -59,8 +59,6 @@
 [v _LATA LATA `VEuc  1 e 1 @1214 ]
 "45840
 [v _TRISA TRISA `VEuc  1 e 1 @1222 ]
-"53732
-[v _RA0 RA0 `VEb  1 e 0 @9840 ]
 "14 C:\GitHub\2021_ENCM369\main.c
 [v _G_u32SystemTime1ms G_u32SystemTime1ms `VEul  1 e 4 0 ]
 "15
@@ -72,14 +70,19 @@
 "35 C:\GitHub\2021_ENCM369\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"82
+"74
 } 0
 "133 C:\GitHub\2021_ENCM369\user_app.c
 [v _UserAppRun UserAppRun `(v  1 e 1 0 ]
 {
-"146
+"136
+[v UserAppRun@au8Pattern au8Pattern `[9]uc  1 a 9 0 ]
+"135
 [v UserAppRun@u16counter u16counter `us  1 s 2 u16counter ]
-"154
+[v UserAppRun@F15926 F15926 `[9]uc  1 s 9 F15926 ]
+"137
+[v UserAppRun@u8counter u8counter `uc  1 s 1 u8counter ]
+"152
 } 0
 "76
 [v _UserAppInitialize UserAppInitialize `(v  1 e 1 0 ]
@@ -92,7 +95,7 @@
 "111
 [v TimeXus@u16TimeLeft u16TimeLeft `us  1 a 2 2 ]
 "105
-[v TimeXus@u16Count u16Count `us  1 p 2 0 ]
+[v TimeXus@u16TimeInput u16TimeInput `us  1 p 2 0 ]
 "119
 } 0
 "132 C:\GitHub\2021_ENCM369\encm369_pic18.c

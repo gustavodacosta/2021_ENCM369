@@ -102,13 +102,13 @@ Promises:
 - Timer0 enabled
  
 */
-void TimeXus(u16 u16Count)
+void TimeXus(u16 u16TimeInput)
 {
     /* Disable the timer during config */
     T0CON0 = T0CON0 & 0x7F;
     
     /* Preload TMR0H and TMR0L based on u16TimeXus */
-    u16 u16TimeLeft = 0xFFFF - u16Count;
+    u16 u16TimeLeft = 0xFFFF - u16TimeInput;
     TMR0H = u16TimeLeft >> 8;
     TMR0L = u16TimeLeft & 0x0F;
     //PIR3 = PIR3 & 0x7F;
@@ -132,25 +132,23 @@ Promises:
 */
 void UserAppRun(void)
 {
-    //static u8 u8counter = 0x80; //counter starts at 0 for all 6 pins used, keeps RA7 on 
-    //if(u8counter <= 0xBF)
-    //{
-    //    LATA = u8counter;       //turns pins on based on value of u8counter
-    //    //__delay_ms(250);        //delay for 250 milliseconds
-    //    u8counter += 0x01;      //update counter
-    //}
-    //else
-    //{
-    //   u8counter = 0x80;        //ensure u8counter goes back to 0x80 at the end of the function
-    //}
-    static u16 u16counter = 0x0000;
-    u16counter++;
-    if(u16counter == 0x01F4)
+    static u16 u16counter = 0x0000; //counter to monitor time in microseconds passed, starts at 0
+    u8 au8Pattern[9] = { 0x21, 0x12, 0x0C, 0x20, 0x10, 0x08, 0x01, 0x02, 0x04 }; //light pattern
+    static u8 u8counter = 0x00;     //counter to access various array elements, starts at 0
+    if(u16counter < 0x01F4)         // 0x01F4 = 500
     {
-        RA0^1;
-        u16counter = 0x0000;
+        u16counter += 0x0001;       //increment u16counter by 1
     }
-    
+    else
+    {
+        LATA = au8Pattern[u8counter]; //turns on pins based on value of u8counter
+        u8counter += 0x01;            //increment u8counter by 1
+        if(u8counter == 0x09)         //once all array elements have been accessed, go back to beginning
+        {
+            u8counter = 0x00;         
+        }
+        u16counter = 0x0000;
+    }   
 } /* end UserAppRun */
 
 
