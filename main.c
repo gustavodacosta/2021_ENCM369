@@ -54,22 +54,30 @@ void main(void)
     /* Drivers */
        
     /* Applications */
-    UserAppRun();
+      
+#if 0 /*Temporary to make fast sawtooth*/
+    TimeXus(2);
+    while( PIR3bits.TMR0IF == 0);
+    DAC1DATL += 4;
+#endif
+
+#if 1 /*Actual assignment code*/  
    
-     
+    UserAppRun();
+    
     /* System sleep */
     HEARTBEAT_OFF();
     SystemSleep();
-    TimeXus(1000);
-    while(1)
-    {
-        if(PIR3 == 0x80)
-        {
-            break;
-        }
-    }
+    
+    /* Set timer */
+    TimeXus(2);
+    while( PIR3bits.TMR0IF == 0);
+    
     HEARTBEAT_ON();
+    
+#endif
   } /* end while(1) main super loop */
+
   
 } /* end main() */
 

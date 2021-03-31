@@ -88,10 +88,14 @@ Promises:
 */
 void GpioSetup(void)
 {
-    LATA = 0x00;     //sets pins off to begin
+    /* Setup PORTA for all digital output */
     TRISA = 0x00;    //sets pins to output
     ANSELA = 0x00;   //sets pins to digital 
-    //RA7 = 1;         //sets pin RA7 on
+    
+    /*Configure DAC1 for Vdd and Vss references, on, and RA2 output. */
+    DAC1CON = 0xA0; // b'1010 0000'
+    
+    
 } /* end GpioSetup() */
 
 
