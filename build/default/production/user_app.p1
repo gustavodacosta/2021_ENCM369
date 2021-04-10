@@ -3172,7 +3172,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "258
 [; ;user_app.c: 258:     u16Counter++;
 [e ++ F15954 -> -> 1 `i `us ]
-"260
-[; ;user_app.c: 260: }
+"259
+[; ;user_app.c: 259: }
 [e :UE 2277 ]
 }

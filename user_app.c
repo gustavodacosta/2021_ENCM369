@@ -256,7 +256,6 @@ void UserAppRun(void)
         u16Counter = 0x0000;
     }
     u16Counter++;
-  
 } /* end UserAppRun() */
 
 
