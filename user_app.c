@@ -237,7 +237,25 @@ Promises:
 */
 void UserAppRun(void)
 {
+  u16 au16NoteArray[] = {C4, NN, C4, NN, G4, NN, G4, NN, A4, NN, A4, NN, G4, NN, F4, NN, F4, NN, E4, NN, E4, NN, D4, NN, D4, NN, C4, NN};
+  u16 au16TimeArray[] = {N4, RT, N4, RT, N4, RT, N4, RT, N4, RT, N4, RT, N2, RT, N4, RT, N4, RT, N4, RT, N4, RT, N4, RT, N4, RT, N2, 2500};
 
+  static u8 u8Index = 0;
+  static u16 u16Counter = 0x0000;
+
+    if (u16Counter == au16TimeArray[u8Index])
+    {
+        InterruptTimerXus(au16NoteArray[u8Index + 1], 1);
+        if(u8Index == 27)
+        {
+            u8Index = 0;
+        } else 
+        {
+            u8Index++;
+        }
+        u16Counter = 0x0000;
+    }
+    u16Counter++;
   
 } /* end UserAppRun() */
 
